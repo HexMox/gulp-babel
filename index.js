@@ -54,7 +54,7 @@ module.exports = function (opts) {
 			}
 
 			this.push(file);
-		}).catch(error => {
+		}).catch(function(error) {
 			this.emit('error', new PluginError('gulp-babel', error, {
 				fileName: file.path,
 				showProperties: false
