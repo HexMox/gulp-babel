@@ -54,14 +54,15 @@ module.exports = function (opts) {
 			}
 
 			this.push(file);
-		}).catch(error => {
+		}).catch((error) => {
 			this.emit('error', new PluginError('gulp-babel', error, {
 				fileName: file.path,
 				showProperties: false
 			}));
+			return Promise.reject(error);
 		}).then(
 			() => cb(),
-			() => cb()
+			(e) => cb(e)
 		);
 	});
 };
